@@ -25,7 +25,7 @@ object KtorNetworkProvider {
         }
         defaultRequest {
             url {
-                host = "api.byu.id/api"
+                host = "bd638bf2-e780-42b9-8226-6413d82bdfa8.mock.pstmn.io"
                 protocol = URLProtocol.HTTPS
             }
         }

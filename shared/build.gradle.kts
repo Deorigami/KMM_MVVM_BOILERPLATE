@@ -17,16 +17,31 @@ val mokoMvvmVersion = "0.13.0"
 val ktorVersion = "2.0.3"
 val moshiVersion = "1.13.0"
 val koinVersion = "3.2.0"
-val dependenciesList = listOf(
-    "dev.icerock.moko:mvvm-core:$mokoMvvmVersion",
-    "dev.icerock.moko:mvvm-flow:$mokoMvvmVersion",
-    "dev.icerock.moko:resources:$mokoResourcesVersion",
-    // Ktor
-    "io.ktor:ktor-client-core:$ktorVersion",
-    "io.ktor:ktor-serialization-kotlinx-json:$ktorVersion",
-    "io.ktor:ktor-client-content-negotiation:$ktorVersion",
-    // KOIN
-    "io.insert-koin:koin-core:$koinVersion",
+val commonDependecies = listOf(
+    Dependencies.Koin.core,
+
+    Dependencies.Ktor.core,
+    Dependencies.Ktor.serialization,
+    Dependencies.Ktor.contentNegotiation,
+
+    Dependencies.Mokko.core,
+    Dependencies.Mokko.flow,
+    Dependencies.Mokko.resources,
+
+    Dependencies.Coroutines.core,
+
+    Dependencies.KotlinX.serialization
+)
+val androidDependencies = listOf(
+    Dependencies.Ktor.androidOkhttp,
+
+    Dependencies.Koin.android,
+    Dependencies.Koin.core,
+
+    Dependencies.Mokko.Compose.flow,
+    Dependencies.Mokko.Compose.resource,
+
+    Dependencies.Android.chucker,
 )
 
 kotlin {
@@ -43,16 +58,14 @@ kotlin {
 
             xcf.add(this)
 
-            dependenciesList.forEach { export(it) }
+            commonDependecies.forEach { export(it) }
         }
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-                dependenciesList.forEach { api(it) }
-                api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0-RC")
+                commonDependecies.forEach { api(it) }
             }
         }
         val commonTest by getting {
@@ -62,12 +75,7 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                api("dev.icerock.moko:mvvm-flow-compose:$mokoMvvmVersion")
-                api("dev.icerock.moko:resources-compose:$mokoResourcesVersion")
-                implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
-                implementation("io.insert-koin:koin-android:$koinVersion")
-                implementation("io.insert-koin:koin-core:$koinVersion")
-                implementation("com.github.chuckerteam.chucker:library:3.5.2")
+                androidDependencies.forEach { api(it) }
             }
         }
         val androidTest by getting

@@ -7,9 +7,22 @@ plugins {
     kotlin("android")
     kotlin( "plugin.serialization" ) version ("1.7.0")
 }
-val ktorVersion = "2.0.3"
-val koinVersion = "3.2.0"
-val composeVersion = "1.2.0"
+
+val dependency = listOf(
+    Dependencies.Android.Compose.ui,
+    Dependencies.Android.Compose.uiTooling,
+    Dependencies.Android.Compose.foundation,
+    Dependencies.Android.Compose.material,
+    Dependencies.Android.Compose.materialIconsCore,
+    Dependencies.Android.Compose.liveData,
+    Dependencies.Android.Compose.activity,
+    Dependencies.Android.Compose.lifecycleViewModel,
+    Dependencies.Android.Compose.navigation,
+    Dependencies.Android.chucker,
+    Dependencies.Ktor.core,
+    Dependencies.Ktor.androidOkhttp,
+    Dependencies.Koin.core,
+)
 
 android {
     compileSdk = 32
@@ -37,31 +50,13 @@ android {
         }
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = composeVersion
+        kotlinCompilerExtensionVersion = Version.compose
     }
 }
 
+
+
 dependencies {
     implementation(project(":shared"))
-
-    implementation("androidx.compose.ui:ui:$composeVersion")
-    // Tooling support (Previews, etc.)
-    implementation("androidx.compose.ui:ui-tooling:$composeVersion")
-    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
-    implementation("androidx.compose.foundation:foundation:$composeVersion")
-    // Material Design
-    implementation("androidx.compose.material:material:$composeVersion")
-    // Material design icons
-    implementation("androidx.compose.material:material-icons-core:$composeVersion")
-    // Integration with observables
-    implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
-
-    implementation("androidx.activity:activity-compose:1.5.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
-    implementation("androidx.navigation:navigation-compose:2.5.1")
-    debugImplementation("com.github.chuckerteam.chucker:library:3.5.2")
-    implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
-    implementation("io.insert-koin:koin-android:$koinVersion")
-    implementation("io.insert-koin:koin-core:$koinVersion")
-
+    dependency.forEach { implementation(it) }
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_bottom_navbar" translatable="false">HOME</string>
+    <string name="wishlist_bottom_navbar" translatable="false">WISHLIST</string>
+    <string name="order_bottom_navbar" translatable="false">ORDER</string>
+    <string name="login_bottom_navbar" translatable="false">LOGIN</string>
+</resources>

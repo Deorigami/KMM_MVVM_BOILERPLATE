@@ -14,18 +14,20 @@ import okhttp3.Response
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
-/*
- * Copyright 2022 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
- */
-
 class AppContext(val context: Context)
 
 actual class KtorClientEngine constructor(private val appContext: AppContext) {
-    actual fun getClientEngine(config: HttpClientConfig<*>.() -> Unit) : HttpClient = HttpClient(OkHttp) {
+    actual fun getClientEngine(baseUrl : String, config: HttpClientConfig<*>.() -> Unit) : HttpClient = HttpClient(OkHttp) {
         config.invoke(this)
         engine {
             val chucker = ChuckerInterceptor.Builder(appContext.context).build()
             addInterceptor(chucker)
+        }
+        defaultRequest {
+            url {
+                host = "bd638bf2-e780-42b9-8226-6413d82bdfa8.mock.pstmn.io"
+                protocol = URLProtocol.HTTPS
+            }
         }
     }
     actual companion object Factory {

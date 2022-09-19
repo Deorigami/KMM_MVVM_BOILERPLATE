@@ -1,7 +1,3 @@
-/*
- * Copyright 2022 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
- */
-
 import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFrameworkTask
 
@@ -12,11 +8,6 @@ plugins {
     kotlin( "plugin.serialization" ) version ("1.7.0")
 }
 
-val mokoResourcesVersion = "0.19.0"
-val mokoMvvmVersion = "0.13.0"
-val ktorVersion = "2.0.3"
-val moshiVersion = "1.13.0"
-val koinVersion = "3.2.0"
 val commonDependecies = listOf(
     Dependencies.Koin.core,
 
@@ -42,6 +33,7 @@ val androidDependencies = listOf(
     Dependencies.Mokko.Compose.resource,
 
     Dependencies.Android.chucker,
+    Dependencies.Android.Compose.pager,
 )
 
 kotlin {

@@ -1,6 +1,4 @@
-/*
- * Copyright 2022 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
- */
+
 
 object Dependencies {
     object Ktor {
@@ -31,16 +29,23 @@ object Dependencies {
     }
     object Android {
         const val chucker = "com.github.chuckerteam.chucker:library:${Version.chucker}"
+        const val ksp = "com.google.devtools.ksp:symbol-processing-api:${Version.ksp}}"
         object Compose {
+            const val constraint = "androidx.constraintlayout:constraintlayout-compose:${Version.constraint}"
             const val ui = "androidx.compose.ui:ui:${Version.compose}"
+            const val pager = "com.google.accompanist:accompanist-pager:${Version.pager}"
             const val uiTooling = "androidx.compose.ui:ui-tooling:${Version.compose}"
+            const val uiToolingPreview = "androidx.compose.ui:ui-tooling-preview:${Version.compose}"
             const val foundation = "androidx.compose.foundation:foundation:${Version.compose}"
             const val material = "androidx.compose.material:material:${Version.compose}"
             const val materialIconsCore = "androidx.compose.material:material-icons-core:${Version.compose}"
             const val liveData = "androidx.compose.runtime:runtime-livedata:${Version.compose}"
             const val activity = "androidx.activity:activity-compose:1.5.1"
             const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1"
-            const val navigation = "androidx.navigation:navigation-compose:2.5.1"
+            const val destinationsCore = "io.github.raamcosta.compose-destinations:core:${Version.navigation}"
+            const val destinationsAnimations = "io.github.raamcosta.compose-destinations:animations-core:${Version.navigation}"
+            const val destinationsKsp = "io.github.raamcosta.compose-destinations:ksp:${Version.navigation}"
+            const val coil = "io.coil-kt:coil-compose:${Version.coil}"
         }
     }
 }

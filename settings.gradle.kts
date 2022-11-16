@@ -1,4 +1,4 @@
-rootProject.name = "boilerplate"
+rootProject.name = "Rumah Kredit"
 
 include(":androidModule:androidApp")
 include(":shared")

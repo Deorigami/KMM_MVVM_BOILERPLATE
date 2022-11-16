@@ -13,7 +13,7 @@ object Version {
     const val chucker = "3.5.2"
     const val compose = "1.2.0"
     const val composeActivity = "1.2.0"
-    const val kotlin = "1.7.0"
-    const val ksp = "1.7.0-1.0.6"
-    const val navigation = "1.7.21-beta"
+    const val kotlin = "1.7.10"
+    const val ksp = "1.7.10-1.0.7"
+    const val navigation = "1.7.26-beta"
 }
